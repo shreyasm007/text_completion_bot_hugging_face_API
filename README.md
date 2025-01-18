@@ -28,8 +28,8 @@ A simple web application that uses Hugging Face's Inference API to generate text
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/text-completion-bot.git
-   cd text-completion-bot
+   git clone https://github.com/shreyasm007/text_completion_bot_hugging_face_API.git
+   cd text_completion_bot_hugging_face_API
    ```
 
 2. **Install Dependencies**:
