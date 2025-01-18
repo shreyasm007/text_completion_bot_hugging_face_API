@@ -1,101 +1,110 @@
 
 # Text Completion Bot
 
-A simple web application that uses Hugging Face's Inference API to generate text completions based on user input. This project is built with **Streamlit** for the frontend and allows dynamic selection of models for text generation.
+Text Completion Bot is a simple web application that allows users to generate text completions using models hosted on Hugging Face's platform. 
+Users can dynamically select from the latest text-generation models, input prompts, and customize generation parameters to get creative responses.
 
 ---
 
-## 🚀 Features
+## Features
 
-- **Dynamic Model Selection**: Choose from a variety of models hosted on Hugging Face, such as `gpt2`, `EleutherAI/gpt-neo`, and more.
-- **Interactive UI**: User-friendly interface built with Streamlit.
-- **Customizable Parameters**:
-  - `Max Length`: Set the maximum length of the generated text.
-  - `Temperature`: Control the creativity of the output.
-- **Environment Variable Support**: Securely manage API keys using a `.env` file.
+- Dynamically fetches the latest **text-generation** models from Hugging Face.
+- Allows users to select models via a dropdown menu.
+- Adjustable parameters for text generation:
+  - **Maximum Length**: Set the maximum number of tokens to generate (min: 10, max: 500).
+  - **Temperature**: Control creativity (higher = more creative).
+- Displays total response time for each model's output.
+- Provides error handling for:
+  - Gateway timeouts (504 errors).
+  - Forbidden access (403 errors) for models exceeding free-tier limits.
 
 ---
 
-## 📦 Installation and Setup
+## How to Run the Project
 
-### Prerequisites
-
-- Python 3.7 or later
-- A [Hugging Face API Key](https://huggingface.co/settings/tokens)
-- Streamlit
-
-### Steps
-
-1. **Clone the Repository**:
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/shreyasm007/text_completion_bot_hugging_face_API.git
    cd text_completion_bot_hugging_face_API
    ```
 
-2. **Install Dependencies**:
+2. **Set Up the Environment**
+   - Create a `.env` file in the root directory and add your Hugging Face API key:
+     ```env
+     HUGGINGFACE_API_KEY=your_api_key_here
+     ```
+
+3. **Install Dependencies**
+   Ensure you have Python installed. Then, run:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Create a `.env` File**:
-   Create a `.env` file in the root directory and add your Hugging Face API key:
-   ```
-   HUGGINGFACE_API_KEY=your_api_key_here
-   ```
-
-4. **Run the Application**:
+4. **Run the Application**
+   Start the Streamlit app using the command:
    ```bash
    streamlit run app.py
    ```
 
-5. **Open in Browser**:
-   The app will run locally on [http://localhost:8501](http://localhost:8501).
+5. **Open in Browser**
+   - The application will open in your default web browser.
+   - If not, navigate to `http://localhost:8501`.
 
 ---
 
-## 🛠️ Usage
+## Dependencies
 
-1. **Enter a Prompt**:
-   Input any text in the prompt field to guide the text generation.
+- `streamlit`: For creating the web interface.
+- `requests`: To fetch models from Hugging Face's API.
+- `huggingface_hub`: To interact with Hugging Face's inference API.
+- `python-dotenv`: To securely manage API keys.
 
-2. **Set Parameters**:
-   - Adjust the `Max Length` slider to control the length of the generated text.
-   - Modify the `Temperature` slider to tweak the creativity of the output.
-
-3. **Choose a Model**:
-   Enter the name of a Hugging Face model (e.g., `gpt2`, `EleutherAI/gpt-neo`) in the "Model Name" input field.
-
-4. **Generate Text**:
-   Click the "Generate Text" button to see the output.
+Install all dependencies via `requirements.txt`.
 
 ---
 
-## 🌟 Example Output
+## Project Files
 
-**Prompt**: "The future of AI is"  
-**Output**: "The future of AI is bright. With advancements in machine learning, artificial intelligence is set to revolutionize industries, improve lives, and unlock new possibilities."
-
----
-
-## 🗂️ Project Structure
-
-```
-text-completion-bot/
-├── app.py               # Main application script
-├── requirements.txt     # Python dependencies
-├── .env                 # Environment variables (not shared publicly)
-└── README.md            # Project documentation
-```
+- **app.py**: The main application file.
+- **.env**: Stores the Hugging Face API key.
+- **requirements.txt**: List of required Python libraries.
+- **README.md**: Project documentation.
 
 ---
 
-## 🤝 Contributing
+## Features in Action
 
-Contributions are welcome! If you'd like to improve this project, please fork the repository, make your changes, and submit a pull request.
+- **Model Selection**: Choose from the latest Hugging Face models tagged for text generation.
+- **Customizable Parameters**: Adjust max length (10–500) and temperature (0.0–1.0).
+- **Dynamic Output**: Get responses with the total time taken displayed.
 
 ---
 
-## 🙌 Acknowledgements
+## Error Handling
 
-- [Hugging Face](https://huggingface.co/) for their powerful APIs.
-- [Streamlit](https://streamlit.io/) for their easy-to-use app framework.
+This application gracefully handles:
+1. **Gateway Timeout (504)**: For models exceeding free-tier limits.
+2. **Forbidden Access (403)**: For large models like `EleutherAI/gpt-j-6B`.
+
+---
+
+## Future Enhancements
+
+- Add support for additional text-generation pipelines.
+- Enable user authentication to save and manage prompts and outputs.
+- Explore integrating fine-tuned models for domain-specific tasks.
+
+
+---
+
+## Acknowledgements
+
+- [Hugging Face](https://huggingface.co) for their incredible models and API.
+- [Streamlit](https://streamlit.io) for the intuitive app framework.
+
+---
+
+## Contribution
+
+Contributions are welcome! Please feel free to submit a Pull Request or open an Issue.
+
